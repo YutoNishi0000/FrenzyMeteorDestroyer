@@ -24,35 +24,64 @@ public class Randomspone : MonoBehaviour
 
 
         }
+        //ランダムに6種類のパターンを選出する
+        px = Random.Range(0, 5);
+        switch (px) {
+            case 0:
+                gameObject.transform.Translate(-200, -200, 0);
+                gameObject2.transform.Translate(200, 200, 0);
+                break;
+            case 1:
+                gameObject.transform.Translate(0, -200, 0);
+                gameObject2.transform.Translate(0, 200, 0);
+                break;
+            case 2:
+                gameObject.transform.Translate(200, -200, 0);
+                gameObject2.transform.Translate(-200, 200, 0);
+                break;
+            case 3:
+                gameObject2.transform.Translate(-200, -200, 0);
+                gameObject.transform.Translate(200, 200, 0);
+                break;
+            case 4:
+                gameObject2.transform.Translate(0, -200, 0);
+                gameObject.transform.Translate(0, 200, 0);
+                break;
+            case 5:
+                gameObject2.transform.Translate(200, -200, 0);
+                gameObject.transform.Translate(-200, 200, 0);
+                break;
+                    }
 
-        /*do
-        {*/
+            /*do
+            {
+                gameObject.transform.Translate(0, 0, 0);
+                gameObject2.transform.Translate(0, 0, 0);
+                px = Random.Range(-225.0f, 225.0f);
 
-            px = Random.Range(-225, 225);
-
-            py = Random.Range(-225, 225);
-
-
-            gameObject.transform.Translate(px, py, 0);
+                py = Random.Range(-225.0f, 225.0f);
 
 
+                gameObject.transform.Translate(px, py, 0);
 
 
-            gx = Random.Range(-225, 225);
-
-            gy = Random.Range(-225, 225);
 
 
-            gameObject2.transform.Translate(gx, gy, 0);
+                gx = Random.Range(-225, 225);
+
+                gy = Random.Range(-225, 225);
 
 
-            dis = Vector3.Distance(gameObject.transform.position, gameObject2.transform.position);
+                gameObject2.transform.Translate(gx, gy, 0);
 
 
-        //} while ((dis > 500)||(dis<400));
-        //Transform.Translate(pv(px, py));
+                dis = Vector2.Distance(gameObject.transform.position, gameObject2.transform.position);
 
-    }
+
+            } while (((dis > 500.0f)||(dis<400.0f))||((gx<-225.0f)||(225.0f<gx))|| ((gy < -225.0f) || (225.0f < gy)));*/
+            //Transform.Translate(pv(px, py));
+
+        }
 
     
 }
