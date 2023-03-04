@@ -38,28 +38,28 @@ public class Randomspone : MonoBehaviour
         px = Random.Range(0, 5);
         switch (px) {
             case 0:
-                gameObject.transform.Translate(-200, -200, 0);
-                gameObject2.transform.Translate(200, 200, 0);
+                gameObject.transform.Translate(-200, -200, 10);
+                gameObject2.transform.Translate(200, 200, 10);
                 break;
             case 1:
-                gameObject.transform.Translate(0, -200, 0);
-                gameObject2.transform.Translate(0, 200, 0);
+                gameObject.transform.Translate(0, -200, 10);
+                gameObject2.transform.Translate(0, 200, 10);
                 break;
             case 2:
-                gameObject.transform.Translate(200, -200, 0);
-                gameObject2.transform.Translate(-200, 200, 0);
+                gameObject.transform.Translate(200, -200, 10);
+                gameObject2.transform.Translate(-200, 200, 10);
                 break;
             case 3:
-                gameObject2.transform.Translate(-200, -200, 0);
-                gameObject.transform.Translate(200, 200, 0);
+                gameObject2.transform.Translate(-200, -200, 10);
+                gameObject.transform.Translate(200, 200, 10);
                 break;
             case 4:
-                gameObject2.transform.Translate(0, -200, 0);
-                gameObject.transform.Translate(0, 200, 0);
+                gameObject2.transform.Translate(0, -200, 10);
+                gameObject.transform.Translate(0, 200, 10);
                 break;
             case 5:
-                gameObject2.transform.Translate(200, -200, 0);
-                gameObject.transform.Translate(-200, 200, 0);
+                gameObject2.transform.Translate(200, -200, 10);
+                gameObject.transform.Translate(-200, 200, 10);
                 break;
                     }
 
