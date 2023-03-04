@@ -7,8 +7,8 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(Rigidbody2D))]
 public class UFOController : MonoBehaviour
 {
-    public float length = 4.0f;
-    public float speed = 2.0f;
+    public float length = 4.0f;     //UFOが動く幅
+    public float speed = 2.0f;      //UFOが動くスピード
     private Vector3 startPos;
     private float randAngle;      //動く方向がx軸から何度離れているか
     private Rigidbody2D rb;
