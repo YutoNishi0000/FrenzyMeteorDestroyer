@@ -8,6 +8,7 @@ public class Randomspone : MonoBehaviour
     public GameObject gameObject;
     public GameObject gameObject2;
     GameObject[] obj = new GameObject[150];
+    float px,py,gx,gy,dis;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,23 +24,39 @@ public class Randomspone : MonoBehaviour
 
 
         }
-        
 
-        float px = Random.Range(-225.0f, 225.0f);
-        
-        float py = Random.Range(-225.0f, 225.0f);
        
+            while ((px < -225.0f) || (225.0f < px))
+            {
+                px = Random.Range(-225.0f, 225.0f);
+            }
 
-        Vector2 pv = new Vector2(px, py);
-        gameObject.transform.Translate(px, py, 0.0f);
+            while ((py < -225.0f) || (225.0f < py))
+            {
+                py = Random.Range(-225.0f, 225.0f);
+            }
 
-        float gx = Random.Range(-225.0f, 225.0f);
+            gameObject.transform.Translate(px, py, 0.0f);
 
-        float gy = Random.Range(-225.0f, 225.0f);
+           
+
+            while ((gx < -225.0f) || (225.0f < gx))
+            {
+                gx = Random.Range(-225.0f, 225.0f);
+            }
+
+            while ((gy < -225.0f) || (225.0f < gy))
+            {
+                gy = Random.Range(-225.0f, 225.0f);
+            }
+            
+            gameObject2.transform.Translate(gx, gy, 0.0f);
 
 
-        Vector2 gv = new Vector2(gx, gy);
-        gameObject.transform.Translate(gx, gy, 0.0f);
+            dis = Vector3.Distance(gameObject.transform.position, gameObject2.transform.position);
+
+        
+
         //Transform.Translate(pv(px, py));
 
     }
