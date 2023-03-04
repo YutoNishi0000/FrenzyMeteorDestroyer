@@ -5,6 +5,8 @@ using UnityEngine;
 public class Randomspone : MonoBehaviour
 {
     public GameObject[] PrefabCube = new GameObject[150];
+    public GameObject gameObject;
+    public GameObject gameObject2;
     GameObject[] obj = new GameObject[150];
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,25 @@ public class Randomspone : MonoBehaviour
 
 
         }
+        
+
+        float px = Random.Range(-225.0f, 225.0f);
+        
+        float py = Random.Range(-225.0f, 225.0f);
+       
+
+        Vector2 pv = new Vector2(px, py);
+        gameObject.transform.Translate(px, py, 0.0f);
+
+        float gx = Random.Range(-225.0f, 225.0f);
+
+        float gy = Random.Range(-225.0f, 225.0f);
+
+
+        Vector2 gv = new Vector2(gx, gy);
+        gameObject.transform.Translate(gx, gy, 0.0f);
+        //Transform.Translate(pv(px, py));
+
     }
 
     
