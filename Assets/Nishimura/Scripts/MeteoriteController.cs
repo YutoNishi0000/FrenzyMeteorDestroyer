@@ -2,9 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Actor : MonoBehaviour
+{
+    protected MeteoriteController Instance;
+
+    private void Awake()
+    {
+        Instance = FindObjectOfType<MeteoriteController>();
+    }
+}
+
 //プレイヤークラス
 [RequireComponent(typeof(Rigidbody))]    //リジッドボディコンポーネントを取得
-public class MeteoriteController : MonoBehaviour
+public class MeteoriteController : Actor
 {
     public enum MeteoriteState
     {
