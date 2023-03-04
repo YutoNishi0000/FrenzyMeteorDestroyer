@@ -13,7 +13,7 @@ public class Actor : MonoBehaviour
 }
 
 //プレイヤークラス
-[RequireComponent(typeof(Rigidbody))]    //リジッドボディコンポーネントを取得
+[RequireComponent(typeof(Rigidbody2D))]    //リジッドボディコンポーネントを取得
 public class MeteoriteController : Actor
 {
     public enum MeteoriteState
@@ -32,7 +32,7 @@ public class MeteoriteController : Actor
     [SerializeField] private float AccelerationRotateSpeed;
     [SerializeField] private float decelerationSpeed;              //減衰速度
     [SerializeField] private float rotateSpeed;                           //回転速度
-    private Rigidbody rb;                                                 //重力
+    private Rigidbody2D rb;                                                 //重力
     private MeteoriteState meteoState;
     private readonly float ACCELERATION_TIME = 2f;
     private CameraController camera;
@@ -41,7 +41,7 @@ public class MeteoriteController : Actor
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         meteoState = new MeteoriteState();    //インスタンスを取得
         speedManager = new SpeedManager(moveSpeed_default, rotationSpeed_default);
         camera = FindObjectOfType<CameraController>();
@@ -66,7 +66,7 @@ public class MeteoriteController : Actor
         //デフォルトの移動
         rb.velocity = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
 
-        rb.velocity += GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
+        rb.velocity += (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
     }
 
     /// <summary>
