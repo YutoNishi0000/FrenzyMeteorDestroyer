@@ -22,7 +22,7 @@ public class MeteoriteController : Actor
         Acceleration       //加速状態
     }
 
-    [SerializeField] private Vector3 defaultDirection;                    //デフォルトで進む方向
+    [SerializeField] private Vector2 defaultDirection;                    //デフォルトで進む方向
     [SerializeField] private float moveSpeed_default;            //デフォルトで動くスピード
     [SerializeField] private float moveSpeed_horizontal;         //左右に動くスピード
     [SerializeField] private float rotationSpeed_default;        //デフォルトの回転速度
@@ -35,7 +35,6 @@ public class MeteoriteController : Actor
     private Rigidbody2D rb;                                                 //重力
     private MeteoriteState meteoState;
     private readonly float ACCELERATION_TIME = 2f;
-    private CameraController camera;
     private SpeedManager speedManager { get; set; }
 
     // Start is called before the first frame update
@@ -44,7 +43,6 @@ public class MeteoriteController : Actor
         rb = GetComponent<Rigidbody2D>();
         meteoState = new MeteoriteState();    //インスタンスを取得
         speedManager = new SpeedManager(moveSpeed_default, rotationSpeed_default);
-        camera = FindObjectOfType<CameraController>();
         InitializeAcceleration();
     }
 
@@ -63,10 +61,10 @@ public class MeteoriteController : Actor
     /// </summary>
     private void MoveController()
     {
+        Vector2 horizontalVec = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
+        Vector2 verticalVec = (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
         //デフォルトの移動
-        rb.velocity = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
-
-        rb.velocity += (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
+        rb.velocity += horizontalVec + verticalVec;
     }
 
     /// <summary>
