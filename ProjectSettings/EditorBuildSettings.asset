@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Main.unity
+    guid: 889d1b1165a52cc468deae9a86ad90f2
+  - enabled: 1
+    path: Assets/Scenes/nomura.unity
+    guid: 7c76d044d4b25e64fbc9b390dcd41071
   m_configObjects: {}
