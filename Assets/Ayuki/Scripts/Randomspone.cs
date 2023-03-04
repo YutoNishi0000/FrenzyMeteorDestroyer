@@ -25,38 +25,31 @@ public class Randomspone : MonoBehaviour
 
         }
 
-       
-            while ((px < -225.0f) || (225.0f < px))
-            {
-                px = Random.Range(-225.0f, 225.0f);
-            }
+        /*do
+        {*/
 
-            while ((py < -225.0f) || (225.0f < py))
-            {
-                py = Random.Range(-225.0f, 225.0f);
-            }
+            px = Random.Range(-225, 225);
 
-            gameObject.transform.Translate(px, py, 0.0f);
+            py = Random.Range(-225, 225);
 
-           
 
-            while ((gx < -225.0f) || (225.0f < gx))
-            {
-                gx = Random.Range(-225.0f, 225.0f);
-            }
+            gameObject.transform.Translate(px, py, 0);
 
-            while ((gy < -225.0f) || (225.0f < gy))
-            {
-                gy = Random.Range(-225.0f, 225.0f);
-            }
-            
-            gameObject2.transform.Translate(gx, gy, 0.0f);
+
+
+
+            gx = Random.Range(-225, 225);
+
+            gy = Random.Range(-225, 225);
+
+
+            gameObject2.transform.Translate(gx, gy, 0);
 
 
             dis = Vector3.Distance(gameObject.transform.position, gameObject2.transform.position);
 
-        
 
+        //} while ((dis > 500)||(dis<400));
         //Transform.Translate(pv(px, py));
 
     }
