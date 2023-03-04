@@ -30,11 +30,13 @@ public class MeteoriteController : Actor
     [SerializeField] private float moveSpeed_acceleration;   //デフォルトの移動速度
     [SerializeField] private float AccelerationMoveSpeed;
     [SerializeField] private float AccelerationRotateSpeed;
+    [SerializeField] private float decelerationSpeed;              //減衰速度
     [SerializeField] private float rotateSpeed;                           //回転速度
     private Rigidbody rb;                                                 //重力
     private MeteoriteState meteoState;
-    private SpeedManager speedManager { get; set; }
     private readonly float ACCELERATION_TIME = 2f;
+    private CameraController camera;
+    private SpeedManager speedManager { get; set; }
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,8 @@ public class MeteoriteController : Actor
         rb = GetComponent<Rigidbody>();
         meteoState = new MeteoriteState();    //インスタンスを取得
         speedManager = new SpeedManager(moveSpeed_default, rotationSpeed_default);
+        camera = FindObjectOfType<CameraController>();
+        InitializeAcceleration();
     }
 
     // Update is called once per frame
@@ -50,7 +54,6 @@ public class MeteoriteController : Actor
         RotationController();
         MoveController();
         AccelerationController(ACCELERATION_TIME);
-        InitializeAcceleration();
     }
 
     #region 移動処理
@@ -145,8 +148,8 @@ public class MeteoriteController : Actor
 
     private SpeedManager GetAccelerationSpeed(SpeedManager speed)
     {
-        AccelerationMoveSpeed -= Time.deltaTime * moveSpeed_default;
-        AccelerationRotateSpeed -= Time.deltaTime * rotationSpeed_default;
+        AccelerationMoveSpeed -= Time.deltaTime * decelerationSpeed;
+        AccelerationRotateSpeed -= Time.deltaTime * decelerationSpeed;
         speed.MoveSpeed = AccelerationMoveSpeed;
         speed.RotateSpeed = AccelerationRotateSpeed;
         return speed;
