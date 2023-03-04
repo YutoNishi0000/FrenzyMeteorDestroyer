@@ -18,12 +18,13 @@ public class MeteoriteController : MonoBehaviour
     [SerializeField] private float rotationSpeed_default;        //デフォルトの回転速度
     [SerializeField] private float rotationSpeed_acceleration;   //デフォルトの回転速度
     [SerializeField] private float moveSpeed_acceleration;   //デフォルトの移動速度
-    [SerializeField] private float moveSpeed;                             //移動速度
+    [SerializeField] private float AccelerationMoveSpeed;
+    [SerializeField] private float AccelerationRotateSpeed;
     [SerializeField] private float rotateSpeed;                           //回転速度
     private Rigidbody rb;                                                 //重力
     private MeteoriteState meteoState;
-    private SpeedManager speedManager;
-    private readonly float ACCELERATION_TIME = 3.0f;
+    private SpeedManager speedManager { get; set; }
+    private readonly float ACCELERATION_TIME = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,8 @@ public class MeteoriteController : MonoBehaviour
     {
         RotationController();
         MoveController();
-        SpeedController(GetMeteoState(), speedManager);
         AccelerationController(ACCELERATION_TIME);
+        InitializeAcceleration();
     }
 
     #region 移動処理
@@ -50,7 +51,7 @@ public class MeteoriteController : MonoBehaviour
     private void MoveController()
     {
         //デフォルトの移動
-        rb.velocity = defaultDirection.normalized * Time.deltaTime * GetSpeedManageer().MoveSpeed;
+        rb.velocity = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
 
         rb.velocity += GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
     }
@@ -87,7 +88,7 @@ public class MeteoriteController : MonoBehaviour
     /// </summary>
     private void RotationController()
     {
-        transform.Rotate(Vector3.forward * GetSpeedManageer().RotateSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.forward * GetSpeed(GetMeteoState()).RotateSpeed * Time.deltaTime);
     }
 
     #endregion
@@ -107,19 +108,21 @@ public class MeteoriteController : MonoBehaviour
         SetMeteoState(MeteoriteState.Acceleration);
         yield return new WaitForSeconds(time);
         SetMeteoState(MeteoriteState.Nomal);
+        InitializeAcceleration();
     }
 
-    private void SpeedController(MeteoriteState state, SpeedManager speed)
+    private SpeedManager GetSpeed(MeteoriteState state)
     {
         switch(state)
         {
             case MeteoriteState.Nomal:
-                SetSpeedManageer(GetNomalSpeed(speed));
-                break;
+                return GetNomalSpeed(speedManager);
 
             case MeteoriteState.Acceleration:
-                SetSpeedManageer(GetAccelerationSpeed(ACCELERATION_TIME, speed));
-                break;
+                return GetAccelerationSpeed(speedManager);
+
+            default:
+                return null;
         }
     }
 
@@ -130,11 +133,19 @@ public class MeteoriteController : MonoBehaviour
         return speed;
     }
 
-    private SpeedManager GetAccelerationSpeed(float time, SpeedManager speed)
+    private SpeedManager GetAccelerationSpeed(SpeedManager speed)
     {
-        speed.MoveSpeed = moveSpeed_acceleration; //Mathf.Lerp(moveSpeed_default, moveSpeed_acceleration, time);
-        speed.RotateSpeed = rotationSpeed_acceleration; //Mathf.Lerp(rotationSpeed_default, rotationSpeed_acceleration, time);
+        AccelerationMoveSpeed -= Time.deltaTime * moveSpeed_default;
+        AccelerationRotateSpeed -= Time.deltaTime * rotationSpeed_default;
+        speed.MoveSpeed = AccelerationMoveSpeed;
+        speed.RotateSpeed = AccelerationRotateSpeed;
         return speed;
+    }
+
+    private void InitializeAcceleration()
+    {
+        AccelerationMoveSpeed = moveSpeed_acceleration;
+        AccelerationRotateSpeed = rotationSpeed_acceleration;
     }
 
     #endregion
@@ -151,16 +162,6 @@ public class MeteoriteController : MonoBehaviour
     public MeteoriteState GetMeteoState()
     {
         return meteoState;
-    }
-
-    public void SetSpeedManageer(SpeedManager speed)
-    {
-        speedManager = speed;
-    }
-
-    public SpeedManager GetSpeedManageer()
-    {
-        return speedManager;
     }
 
     #endregion
