@@ -2,28 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class result : MonoBehaviour
+public class Sound : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource source; //スピーカー・CDプレイヤー
+    private SoundManager soundManager; 
 
     [SerializeField]
     private AudioClip clip1; //音源データ1
 
     [SerializeField]
-    private AudioClip clip2; 
+    private AudioClip clip2; //音源データ2
     // Start is called before the first frame update
     void Start()
     {
-        if(MeteoriteController.isClear)
-        {
-            source.clip = clip1;
-        }
-        else{
-            source.clip = clip2;
-        }
-         //再生したいclipを指定して
-        source.Play();
+        soundManager.Play(clip1);
     }
 
     // Update is called once per frame
