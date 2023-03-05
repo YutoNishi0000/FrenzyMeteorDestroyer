@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//オブジェクト基底クラス
 public class Actor : MonoBehaviour
 {
     protected MeteoriteController Instance;
@@ -12,6 +13,7 @@ public class Actor : MonoBehaviour
     }
 }
 
+//スピードクラス
 public class SpeedManager
 {
     public float MoveSpeed;
@@ -53,10 +55,12 @@ public class MeteoriteController : Actor, IDamageable
     [SerializeField] private float AccelerationRotateSpeed;
     [SerializeField] private float decelerationSpeed;              //減衰速度
     [SerializeField] private float rotateSpeed;                           //回転速度
-    [SerializeField] private int PlayerHP;
+    [SerializeField] private int PlayerMaxHP;                        //プレイヤーのHP最大値
+    private readonly float ACCELERATION_TIME = 2f;
+    private int PlayerHP;
     private Rigidbody2D rb;                                                 //重力
     private MeteoriteState meteoState;
-    private readonly float ACCELERATION_TIME = 2f;
+    private Vector3 InitialSize;                                 //隕石のゲーム開始時のスケールを取得
     private SpeedManager speedManager { get; set; }
 
     // Start is called before the first frame update
@@ -66,6 +70,8 @@ public class MeteoriteController : Actor, IDamageable
         meteoState = new MeteoriteState();    //インスタンスを取得
         speedManager = new SpeedManager(moveSpeed_default, rotationSpeed_default);
         InitializeAcceleration();
+        InitialSize = transform.localScale;
+        PlayerHP = PlayerMaxHP;
     }
 
     // Update is called once per frame
@@ -185,13 +191,27 @@ public class MeteoriteController : Actor, IDamageable
 
     #region 被弾処理
 
+    //ダメージ処理
     public void Damage(int damageVal)
     {
+        //HPを減らす
         PlayerHP -= damageVal;
+
+        //大きさを小さくする
+        transform.localScale -= (InitialSize / PlayerMaxHP) * damageVal;
+
+        //もしプレイヤーのHPが0になったら
+        if(PlayerHP <= 0)
+        {
+            //死亡処理を行う
+            Death();
+        }
     }
 
+    //死亡処理
     public void Death()
     {
+        //ゲームオーバー
         GameManager.Instance.LoadScene("GameOver");
     }
 
