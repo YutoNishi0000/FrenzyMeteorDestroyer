@@ -135,12 +135,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
+      propertyPath: PlayerMaxHP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: decelerationSpeed
       value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_default
-      value: 0.0001
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: defaultDirection.x
@@ -148,19 +152,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_horizontal
-      value: 10
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: rotationSpeed_default
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_acceleration
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: rotationSpeed_acceleration
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057843, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: m_RootOrder
@@ -204,6 +208,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057843, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743233822482453950, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743233822482453950, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
+      propertyPath: m_UseAutoMass
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
