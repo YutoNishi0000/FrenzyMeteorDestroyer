@@ -25,9 +25,17 @@ public class SpeedManager
     }
 }
 
+//ダメージ処理インターフェイス
+interface IDamageable
+{
+    public void Damage(int damageVal) { }
+
+    public void Death() { }
+}
+
 //プレイヤークラス
 [RequireComponent(typeof(Rigidbody2D))]    //リジッドボディコンポーネントを取得
-public class MeteoriteController : Actor
+public class MeteoriteController : Actor, IDamageable
 {
     public enum MeteoriteState
     {
@@ -45,6 +53,7 @@ public class MeteoriteController : Actor
     [SerializeField] private float AccelerationRotateSpeed;
     [SerializeField] private float decelerationSpeed;              //減衰速度
     [SerializeField] private float rotateSpeed;                           //回転速度
+    [SerializeField] private int PlayerHP;
     private Rigidbody2D rb;                                                 //重力
     private MeteoriteState meteoState;
     private readonly float ACCELERATION_TIME = 2f;
@@ -170,6 +179,20 @@ public class MeteoriteController : Actor
     {
         AccelerationMoveSpeed = moveSpeed_acceleration;
         AccelerationRotateSpeed = rotationSpeed_acceleration;
+    }
+
+    #endregion
+
+    #region 被弾処理
+
+    public void Damage(int damageVal)
+    {
+        PlayerHP -= damageVal;
+    }
+
+    public void Death()
+    {
+        GameManager.Instance.LoadScene("GameOver");
     }
 
     #endregion
