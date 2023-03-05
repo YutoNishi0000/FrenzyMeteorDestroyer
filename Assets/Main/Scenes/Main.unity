@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_acceleration
-      value: -0.1
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: rotationSpeed_acceleration
