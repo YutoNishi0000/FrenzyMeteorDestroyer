@@ -9,5 +9,6 @@ public class SceneTransion : MonoBehaviour
     public void NextScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+
     }
 }
