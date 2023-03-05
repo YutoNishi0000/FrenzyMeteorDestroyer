@@ -44,7 +44,11 @@ public class MeteoriteController : Actor, IDamageable
         Nomal,             //ノーマル状態
         Acceleration       //加速状態
     }
+    [SerializeField]
+    private SoundManager soundManager;
 
+    [SerializeField]
+    private AudioClip clip2;
     [SerializeField] private Vector2 defaultDirection;                    //デフォルトで進む方向
     [SerializeField] private float moveSpeed_default;            //デフォルトで動くスピード
     [SerializeField] private float moveSpeed_horizontal;         //左右に動くスピード
@@ -198,7 +202,7 @@ public class MeteoriteController : Actor, IDamageable
     {
         //HPを減らす
         PlayerHP -= damageVal;
-
+        soundManager.Play(clip2);
         //大きさを小さくする
         transform.localScale -= (InitialSize / PlayerMaxHP) * damageVal;
 

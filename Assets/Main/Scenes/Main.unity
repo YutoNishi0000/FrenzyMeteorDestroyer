@@ -135,9 +135,17 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
+      propertyPath: clip2
+      value: 
+      objectReference: {fileID: 8300000, guid: 402b06e537be5db44815c950c438b435, type: 3}
+    - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: PlayerMaxHP
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1644729653}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: decelerationSpeed
       value: 1
