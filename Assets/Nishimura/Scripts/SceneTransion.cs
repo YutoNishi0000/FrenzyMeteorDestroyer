@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 //シーン遷移のためのクラス
 public class SceneTransion : MonoBehaviour
 {
-    public void NextScene(string sceneName)
+    // Start is called before the first frame update
+    void Start()
     {
-        SceneManager.LoadScene(sceneName);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
