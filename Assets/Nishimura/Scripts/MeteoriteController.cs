@@ -62,8 +62,6 @@ public class MeteoriteController : Actor, IDamageable
     private MeteoriteState meteoState;
     private Vector3 InitialSize;                                 //隕石のゲーム開始時のスケールを取得
     private SpeedManager speedManager { get; set; }
-    private Vector2 horizontalVec;
-    private Vector2 verticalVec;
 
     public static bool isClear = false;
     public static int lustHP = 0;
@@ -93,14 +91,10 @@ public class MeteoriteController : Actor, IDamageable
     /// </summary>
     private void MoveController()
     {
-        //Vector2 horizontalVec = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
-        //Vector2 verticalVec = (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
-        ////デフォルトの移動
-        //rb.velocity += horizontalVec + verticalVec;
-        horizontalVec += defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
-        verticalVec += (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
+        Vector2 horizontalVec = defaultDirection.normalized * Time.deltaTime * GetSpeed(GetMeteoState()).MoveSpeed;
+        Vector2 verticalVec = (Vector2)GetHorizontalVector(defaultDirection) * Time.deltaTime * moveSpeed_horizontal;
         //デフォルトの移動
-        rb.MovePosition(horizontalVec + verticalVec);
+        rb.velocity += horizontalVec + verticalVec;
     }
 
     /// <summary>
@@ -244,7 +238,7 @@ public class MeteoriteController : Actor, IDamageable
     }        
     #endregion
 
-    #region ゲッター、セッター
+            #region ゲッター、セッター
 
             //隕石の状態をセット
             public void SetMeteoState(MeteoriteState state)
