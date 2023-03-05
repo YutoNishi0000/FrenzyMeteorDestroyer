@@ -63,6 +63,8 @@ public class MeteoriteController : Actor, IDamageable
     private Vector3 InitialSize;                                 //隕石のゲーム開始時のスケールを取得
     private SpeedManager speedManager { get; set; }
 
+    public static bool isClear = false;
+    public static int lustHP = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -211,16 +213,35 @@ public class MeteoriteController : Actor, IDamageable
     //死亡処理
     public void Death()
     {
+        isClear = false;
         //ゲームオーバー
         GameManager.Instance.LoadScene("result");
+        
     }
+
 
     #endregion
 
-    #region ゲッター、セッター
+    #region 地球衝突処理
 
-    //隕石の状態をセット
-    public void SetMeteoState(MeteoriteState state)
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("goal"))
+        {
+            isClear = true;
+            //ゲームオーバー
+            lustHP = PlayerHP;
+            GameManager.Instance.LoadScene("result");
+        }
+    }        
+    #endregion
+
+            #region ゲッター、セッター
+
+            //隕石の状態をセット
+            public void SetMeteoState(MeteoriteState state)
     {
         meteoState = state;
     }
