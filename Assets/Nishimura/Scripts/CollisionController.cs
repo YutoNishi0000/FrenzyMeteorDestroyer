@@ -6,6 +6,8 @@ public class CollisionController : MonoBehaviour
 {
     [SerializeField] private int damageNum;
 
+   
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
      
@@ -20,6 +22,7 @@ public class CollisionController : MonoBehaviour
                 return;
             }
             Debug.Log("ÚG");
+            
             //ƒ_ƒ[ƒWˆ—
             damageable.Damage(damageNum);
         }
