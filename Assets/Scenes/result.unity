@@ -1248,6 +1248,10 @@ MonoBehaviour:
   source: {fileID: 1892217156}
   clip1: {fileID: 8300000, guid: 3fbc49c510437a446814a99d85dbd848, type: 3}
   clip2: {fileID: 8300000, guid: e9854dbb2990fb444a6cd0d6ac8b0294, type: 3}
+  spriteearth1: {fileID: 21300000, guid: 0c70f930b77bf044fb4918243fb401e9, type: 3}
+  spriteearth2: {fileID: 21300000, guid: 1c46a2d5f1b623443bc2a9a48d7ea047, type: 3}
+  spriteearth3: {fileID: 21300000, guid: 6f84ededb53591a4c9de99f71b783bb7, type: 3}
+  earth: {fileID: 732907749}
 --- !u!4 &1892217158
 Transform:
   m_ObjectHideFlags: 0
