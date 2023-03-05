@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_default
-      value: 5
+      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: defaultDirection.x
@@ -152,15 +152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: rotationSpeed_default
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: moveSpeed_acceleration
-      value: 75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057842, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: rotationSpeed_acceleration
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6382369492780057843, guid: e3e1a3504a862de468acde4ad0e2589b, type: 3}
       propertyPath: m_RootOrder
@@ -878,7 +878,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1bc6fc75be48579488b8988abb15e786, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
