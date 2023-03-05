@@ -12,6 +12,19 @@ public class Actor : MonoBehaviour
     }
 }
 
+public class SpeedManager
+{
+    public float MoveSpeed;
+    public float RotateSpeed;
+
+    //コンストラクタ
+    public SpeedManager(float moveSoeed, float rotateSpeed)
+    {
+        MoveSpeed = moveSoeed;
+        RotateSpeed = rotateSpeed;
+    }
+}
+
 //プレイヤークラス
 [RequireComponent(typeof(Rigidbody2D))]    //リジッドボディコンポーネントを取得
 public class MeteoriteController : Actor
@@ -176,17 +189,4 @@ public class MeteoriteController : Actor
     }
 
     #endregion
-}
-
-public class SpeedManager
-{
-    public float MoveSpeed;
-    public float RotateSpeed;
-
-    //コンストラクタ
-    public SpeedManager(float moveSoeed, float rotateSpeed)
-    {
-        MoveSpeed = moveSoeed;
-        RotateSpeed = rotateSpeed;
-    }
 }

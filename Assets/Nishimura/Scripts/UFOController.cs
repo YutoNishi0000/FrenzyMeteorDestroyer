@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 //ƒ‰ƒ“ƒ_ƒ€‚ÉŒˆ‚ß‚½•ûŒü‚É‘Î‚µ‚Ä¶‰EˆÚ“®‚ğs‚¤
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CollisionController))]
 public class UFOController : MonoBehaviour
 {
     public float length = 4.0f;     //UFO‚ª“®‚­•
