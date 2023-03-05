@@ -212,7 +212,7 @@ public class MeteoriteController : Actor, IDamageable
     public void Death()
     {
         //ゲームオーバー
-        GameManager.Instance.LoadScene("GameOver");
+        GameManager.Instance.LoadScene("result");
     }
 
     #endregion
