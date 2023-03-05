@@ -37,29 +37,18 @@ public class Randomspone : MonoBehaviour
 
         }
         //ランダムに6種類のパターンを選出する
-        px = Random.Range(0, 5);
+        px = Random.Range(0, 3);
         switch (px) {
+            
             case 0:
-                gameObject.transform.Translate(-200, -200, 2);
-                gameObject2.transform.Translate(200, 200, 2);
-                break;
-            case 1:
-                gameObject.transform.Translate(0, -200, 2);
-                gameObject2.transform.Translate(0, 200, 2);
-                break;
-            case 2:
-                gameObject.transform.Translate(200, -200, 2);
-                gameObject2.transform.Translate(-200, 200, 2);
-                break;
-            case 3:
                 gameObject2.transform.Translate(-200, -200, 2);
                 gameObject.transform.Translate(200, 200, 2);
                 break;
-            case 4:
+            case 1:
                 gameObject2.transform.Translate(0, -200, 2);
                 gameObject.transform.Translate(0, 200, 2);
                 break;
-            case 5:
+            case 2:
                 gameObject2.transform.Translate(200, -200, 2);
                 gameObject.transform.Translate(-200, 200, 2);
                 break;
