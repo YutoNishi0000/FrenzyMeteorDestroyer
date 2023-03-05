@@ -17,7 +17,19 @@ public class result : MonoBehaviour
     {
         if(MeteoriteController.isClear)
         {
-            source.clip = clip1;
+            if(MeteoriteController.lustHP==3)
+            {
+                source.clip = clip1;
+            }
+            else if(MeteoriteController.lustHP == 2)
+            {
+                source.clip = clip2;
+            }
+            else if (MeteoriteController.lustHP == 1)
+            {
+                source.clip = clip2;
+            }
+                
         }
         else{
             source.clip = clip2;
